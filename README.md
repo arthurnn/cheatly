@@ -3,6 +3,10 @@
 This is a command line toolset to handle the cheat-sheets reposity located at [sheets](https://github.com/arthurnn/cheatly/tree/master/sheets) folder.
 This gem is inspired by https://github.com/defunkt/cheat.
 
+## Please, help. Adding a new cheat-sheet
+
+Submit a PR, adding a file to `sheets` folder, with the cheat-sheet name.
+
 ## Installation
 
     $ gem install cheatly
@@ -10,10 +14,6 @@ This gem is inspired by https://github.com/defunkt/cheat.
 ## Usage
 
     $ cheatly show gem_release
-
-## Adding a new cheat-sheet
-
-Submit a PR, adding a file to `sheets` folder, with the cheat-sheet name.
 
 ## Contributing
 
