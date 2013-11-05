@@ -31,6 +31,10 @@ module Cheatly
     def find(path)
       File.read(path)
     end
+
+    def all
+      Dir["sheets/*.yml"].map { |f| f.scan(/sheets\/(.*).yml/)[0][0] }
+    end
   end
 
   class GithubAdapter
