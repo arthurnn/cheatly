@@ -16,6 +16,8 @@ module Cheatly
     def self.find(handle)
       t, b = adapter.find(handle)
       Sheet.new(t, b)
+    rescue ## TODO: this is bad, fix me
+      nil
     end
 
     def self.all

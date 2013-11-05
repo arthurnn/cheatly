@@ -41,6 +41,10 @@ module Cheatly
 
     def sheet(handle)
       sheet = model.find(handle)
+      unless sheet
+        puts "Sheet not found, run 'cheatly list' to see the availables."
+        return
+      end
       page
       puts "#{sheet.title}:"
       puts sheet.to_s
