@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Cheatly::VERSION
   spec.authors       = ["Arthur Neves"]
   spec.email         = ["arthurnn@gmail.com"]
-  spec.description   = %q{Write a gem description}
-  spec.summary       = %q{Write a gem summary}
+  spec.description   = %q{A cheat-sheet cli for a cheat repository}
+  spec.summary       = %q{A cheat-sheet cli for a cheat repository}
   spec.homepage      = ""
   spec.license       = "MIT"
 
