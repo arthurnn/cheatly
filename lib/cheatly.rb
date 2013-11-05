@@ -10,6 +10,8 @@ module Cheatly
     include Pager
 
     def initialize(args)
+      @command = args.shift
+      @handle = args.first
     end
 
     def sheet(handle)
@@ -20,7 +22,7 @@ module Cheatly
     end
 
     def process
-      sheet('gem_release')
+      sheet(@handle)
     end
   end
 
