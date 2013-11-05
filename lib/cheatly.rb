@@ -12,8 +12,9 @@ module Cheatly
     include Pager
 
     def initialize(args)
-      @command = args.shift
+      @command = args.shift || "help"
       @handle = args.first
+      @handle = @command if "help" == @command
     end
 
     def sheet(handle)
