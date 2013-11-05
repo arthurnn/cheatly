@@ -1,0 +1,63 @@
+---
+migrations: ! "  Methods:\n    create_table(name, options)\n    drop_table(name)\n
+  \   rename_table(old_name, new_name)\n    add_column(table_name, column_name, type,
+  options)\n    rename_column(table_name, column_name, new_column_name)\n    change_column(table_name,
+  column_name, type, options)\n    remove_column(table_name, column_name)\n    add_index(table_name,
+  column_name, index_type)\n    remove_index(table_name, column_name)\n    change_table(table_name)
+  {|Table.new(table_name, self)| ...} \n  \n  Available Column Types (mappings are
+  below):\n    * integer\n    * float\n    * datetime\n    * date\n    * timestamp\n
+  \   * time\n    * text\n    * string\n    * binary\n    * boolean\n    * decimal
+  :precision, :scale\n  \n  Valid Column Options:\n    * limit\n    * null (i.e. \":null
+  => false\" implies NOT NULL)\n    * default (to specify default values)\n    * :decimal,
+  :precision => 8, :scale => 3\n  \n  Rake Tasks:\n    rake db:schema:dump: run after
+  you create a model to capture the schema.rb\n    rake db:schema:import: import the
+  schema file into the current database (on\n    error, check if your schema.rb has
+  \":force => true\" on the create table\n    statements\n    ./script/generate migration
+  MigrationName: generate a new migration with a\n    new 'highest' version (run './script/generate
+  migration' for this info at\n    your fingertips)\n    rake db:migrate: migrate
+  your current database to the most recent version\n    rake db:migrate VERSION=5:
+  migrate your current database to a specific\n    version (in this case, version
+  5)\n    rake db:rollback: migrate down one migration\n    rake db:rollback STEP=3:
+  migrate down three migrations\n    rake db:migrate RAILS_ENV=production: migrate
+  your production database\n  \n  SQL:\n    Queries can be executed directly:\n    execute
+  'ALTER TABLE researchers ADD CONSTRAINT fk_researchers_departments\n    FOREIGN
+  KEY ( department_id ) REFERENCES departments( id )'\n  \n  Example Migration:\n
+  \   class UpdateUsersAndCreateProducts < ActiveRecord::Migration\n      def self.up\n
+  \       rename_column \"users\", \"password\", \"hashed_password\" \n        remove_column
+  \"users\", \"email\" \n  \n        User.reset_column_information\n        User.find(:all).each{|u|
+  #do something with u}\n  \n        create_table \"products\", :force => true do
+  |t|\n          t.column \"name\", :text\n          t.column \"description\", :text\n
+  \         t.column \"price\", :decimal, :precision => 9, :scale => 2\n          t.column
+  \"category_id\", :integer\n        end\n  \n        #the rails 2.0 way:\n        create_table
+  :people do |t|\n          t.integer :account_id\n          t.string  :first_name,
+  :last_name, :null => false\n          t.text    :description\n          t.references
+  :category # is the equivalent of t.integer :category_id\n          t.timestamps\n
+  \       end\n      end\n  \n      def self.down\n        rename_column \"users\",
+  \"hashed_password\", \"password\" \n        add_column \"users\", \"email\", :string\n
+  \       drop_table \"products\" \n      end\n    end\n  \n  Find Highest version:\n
+  \   script/runner \"puts ActiveRecord::Migrator.current_version\"\n  \n  Database
+  Mapping\n  \n  Rails      | db2          | mysql        | openbase     | Oracle
+  \       |\n  ---        | ---          | ---          | ---          | ---           |\n
+  \ :binary    | blob(32678)  | blob         | object       | blob          |\n  :boolean
+  \  | decimal(1)   | tinyint(1)   | boolean      | number(10)    |\n  :date      |
+  date         | date         | date         | date          |\n  :datetime  | timestamp
+  \   | datetime     | datetime     | date          |\n  :decimal   | decimal      |
+  decimal      | decimal      | decimal       |\n  :float     | float        | float
+  \       | float        | number        |\n  :integer   | int          | int(11)
+  \     | integer      | number(38)    |\n  :string    | varchar(255) | varchar(255)
+  | char(4096)   | varchar2(255) |\n  :text      | clob(32768)  | text         | text
+  \        | clob          |\n  :time      | time         | time         | time         |
+  date          |\n  :timestamp | timestamp    | datetime     | timestamp    | date
+  \         |\n  \n  Rails      | postgresql   | sqlite       | sqlserver    | Sybase
+  \       |\n  ---        | ---          | ---          | ---          | ---           |\n
+  \ :binary    | bytea        | blob         | image        | image         |\n  :boolean
+  \  | boolean      | boolean      | bit          | bit           |\n  :date      |
+  date         | date         | datetime     | datetime      |\n  :datetime  | timestamp
+  \   | datetime     | datetime     | datetime      |\n  :decimal   | decimal      |
+  decimal      | decimal      | decimal       |\n  :float     | float        | float
+  \       | float(8)     | float(8)      |\n  :integer   | integer      | integer
+  \     | int          | int           |\n  :string    | *            | varchar(255)
+  | varchar(255) | varchar(255)  |\n  :text      | text         | text         | text
+  \        | text          |\n  :time      | time         | datetime     | datetime
+  \    | time          |\n  :timestamp | timestamp    | datetime     | datetime     |
+  timestamp     |"
