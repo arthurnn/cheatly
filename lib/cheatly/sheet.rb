@@ -24,8 +24,12 @@ module Cheatly
     end
 
     def self.adapter
-#      @adapter ||= FileAdapter.new
       @adapter ||= GithubAdapter.new
+    end
+
+    def self.with_file_adapter
+      @adapter = FileAdapter.new
+      self
     end
   end
 

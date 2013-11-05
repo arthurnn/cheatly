@@ -1,5 +1,6 @@
 require "base64"
 require "json"
+require "tempfile"
 
 require "httparty"
 require "pager"
@@ -37,12 +38,36 @@ module Cheatly
       end
     end
 
+    def create(handle)
+      body = write_to_tempfile(handle)
+      Sheet.with_file_adapter.create(handle, body)
+    end
+
+    def write_to_tempfile(title, body = nil)
+      # god dammit i hate tempfile, this is so messy but i think it's
+      # the only way.
+      tempfile = Tempfile.new(title + '.yml')
+      tempfile.write(body) if body
+      tempfile.close
+      system "#{editor} #{tempfile.path}"
+      tempfile.open
+      body = tempfile.read
+      tempfile.close
+      body
+    end
+
+    def editor
+      ENV['VISUAL'] || ENV['EDITOR'] || "nano"
+    end
+
     def process
       case @command
       when "show"
         sheet(@handle)
       when "list"
         list
+      when "new"
+        create(@handle)
       else
         puts "Command [#{@command}] not found. :-("
       end
