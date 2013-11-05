@@ -37,12 +37,30 @@ module Cheatly
       end
     end
 
+    def help
+      page
+      puts "cheatly help"
+      puts "------------"
+      puts "usage: $cheatly list"
+      puts "       To list the available sheets"
+      puts "       "
+      puts "       $cheatly show (sheetname)"
+      puts "       To see the sheet"
+      puts "       "
+      puts "       $cheatly help"
+      puts "       To see this"
+      puts "       happy cheating !"
+      puts "       "
+    end
+
     def process
       case @command
       when "show"
         sheet(@handle)
       when "list"
         list
+      when "help"
+        help
       else
         puts "Command [#{@command}] not found. :-("
       end
