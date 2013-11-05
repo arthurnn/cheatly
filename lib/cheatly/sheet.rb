@@ -6,7 +6,7 @@ module Cheatly
     end
 
     def to_s
-      " #{@body.gsub("\r",'').gsub("\n", "\n  ")}"
+      "  #{@body.gsub("\r",'').gsub("\n", "\n  ")}"
     end
 
     def self.find(handle)
