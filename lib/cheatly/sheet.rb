@@ -10,7 +10,7 @@ module Cheatly
     end
 
     def self.create(title, body)
-      self.class.adapter.create(title, body)
+      adapter.create(title, body)
     end
 
     def self.find(handle)
