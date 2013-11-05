@@ -9,10 +9,12 @@ module Cheatly
       "  #{@body.gsub("\r",'').gsub("\n", "\n  ")}"
     end
 
+    def self.create(title, body)
+      self.class.adapter.create(title, body)
+    end
+
     def self.find(handle)
-      sheet_yaml = adapter.find("sheets/#{handle}.yml")
-      yml = YAML.load(sheet_yaml).first
-      t, b = yml.first, yml.last
+      t, b = adapter.find(handle)
       Sheet.new(t, b)
     end
 
@@ -28,12 +30,22 @@ module Cheatly
   end
 
   class FileAdapter
-    def find(path)
-      File.read(path)
+    def find(name)
+      path = "sheets/#{name}.yml"
+      sheet_yaml = File.read(path)
+      yml = YAML.load(sheet_yaml).first
+      [yml.first, yml.last]
     end
 
     def all
       Dir["sheets/*.yml"].map { |f| f.scan(/sheets\/(.*).yml/)[0][0] }
+    end
+
+    def create(name, body)
+      body = {name => body}.to_yaml
+      f = File.new "sheets/#{name}.yml", "w"
+      f.write(body)
+      f.close
     end
   end
 
@@ -42,19 +54,25 @@ module Cheatly
     base_uri 'https://api.github.com'
 
     def base_path
-      "/repos/arthurnn/cheatly/contents"
+      "/repos/arthurnn/cheatly/contents/sheets"
     end
 
     def find(path)
-      response = self.class.get("#{base_path}/#{path}")
+      response = self.class.get("#{base_path}/#{path}.yml")
       json = JSON.parse(response.body)
-      Base64.decode64(json["content"])
+      sheet_yaml = Base64.decode64(json["content"])
+      yml = YAML.load(sheet_yaml).first
+      [yml.first, yml.last]
     end
 
     def all
-      response = self.class.get("#{base_path}/sheets")
+      response = self.class.get(base_path)
       json = JSON.parse(response.body)
       json.map { |entry| entry["name"].gsub('.yml', '') }
+    end
+
+    def create
+      raise NotImplementedError
     end
   end
 end
