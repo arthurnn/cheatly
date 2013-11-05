@@ -22,3 +22,7 @@ Submit a PR, adding a file to `sheets` folder, with the cheat-sheet name.
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/arthurnn/cheatly/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
