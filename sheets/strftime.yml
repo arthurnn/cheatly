@@ -1,0 +1,47 @@
+---
+strftime: ! "Ruby 1.8.7\r\n  %a - The abbreviated weekday name (“Sun”)\r\n  %A - The
+  \ full  weekday  name (“Sunday”)\r\n  %b - The abbreviated month name (“Jan”)\r\n
+  \ %B - The  full  month  name (“January”)\r\n  %c - The preferred local date and
+  time representation\r\n  %d - Day of the month (01..31)\r\n  %H - Hour of the day,
+  24-hour clock (00..23)\r\n  %I - Hour of the day, 12-hour clock (01..12)\r\n  %l
+  - Hour of the day, 12-hour clock without leading zero (1..12)\r\n  %j - Day of the
+  year (001..366)\r\n  %m - Month of the year (01..12)\r\n  %M - Minute of the hour
+  (00..59)\r\n  %p - Meridian indicator (“AM”  or  “PM”)\r\n  %S - Second of the minute
+  (00..60)\r\n  %U - Week  number  of the current year,\r\n          starting with
+  the first Sunday as the first\r\n          day of the first week (00..53)\r\n  %W
+  - Week  number  of the current year,\r\n          starting with the first Monday
+  as the first\r\n          day of the first week (00..53)\r\n  %w - Day of the week
+  (Sunday is 0, 0..6)\r\n  %x - Preferred representation for the date alone, no time\r\n
+  \ %X - Preferred representation for the time alone, no date\r\n  %y - Year without
+  a century (00..99)\r\n  %Y - Year with century\r\n  %Z - Time zone name\r\n  %%
+  - Literal “%” character\r\n\r\n   t = Time.now\r\n   t.strftime(\"Printed on %m/%d/%Y\")
+  \  #=> \"Printed on 04/09/2003\"\r\n   t.strftime(\"at %I:%M%p\")            #=>
+  \"at 08:56AM\"\r\n\r\nRuby 1.9\r\n  %a - The abbreviated weekday name (“Sun”)\r\n
+  \ %A - The  full  weekday  name (“Sunday”)\r\n  %b - The abbreviated month name
+  (“Jan”)\r\n  %B - The  full  month  name (“January”)\r\n  %c - The preferred local
+  date and time representation\r\n  %d - Day of the month (01..31)\r\n  %e - Day of
+  the month,\r\n          a single digit is preceded by a space (range ' 1' to '31')\r\n
+  \ %F - Equivalent to %Y-%m-%d (the ISO 8601 date format)\r\n  %H - Hour of the day,
+  24-hour clock (00..23)\r\n  %I - Hour of the day, 12-hour clock (01..12)\r\n  %j
+  - Day of the year (001..366)\r\n  %L - Millisecond of the second (000..999)\r\n
+  \ %m - Month of the year (01..12)\r\n  %M - Minute of the hour (00..59)\r\n  %N
+  - Fractional seconds digits, default is 9 digits (nanosecond)\r\n          %3N  millisecond
+  (3 digits)\r\n          %6N  microsecond (6 digits)\r\n          %9N  nanosecond
+  (9 digits)\r\n          %12N picosecond (12 digits)\r\n  %p - Meridian indicator
+  (“AM”  or  “PM”)\r\n  %P - Meridian indicator (“am”  or  “pm”)\r\n  %s - Number
+  of seconds since 1970-01-01 00:00:00 UTC.\r\n  %S - Second of the minute (00..60)\r\n
+  \ %U - Week  number  of the current year,\r\n          starting with the first Sunday
+  as the first\r\n          day of the first week (00..53)\r\n  %W - Week  number
+  \ of the current year,\r\n          starting with the first Monday as the first\r\n
+  \         day of the first week (00..53)\r\n  %w - Day of the week (Sunday is 0,
+  0..6)\r\n  %x - Preferred representation for the date alone, no time\r\n  %X - Preferred
+  representation for the time alone, no date\r\n  %y - Year without a century (00..99)\r\n
+  \ %Y - Year with century\r\n  %z - Time zone offset from UTC (+/-0000, e.g. EST
+  = -0500)\r\n  %Z - Time zone name\r\n  %% - Literal “%” character\r\n\r\n   t =
+  Time.now                        #=> 2007-11-19 08:37:48 -0600\r\n   t.strftime(\"Printed
+  on %m/%d/%Y\")   #=> \"Printed on 11/19/2007\"\r\n   t.strftime(\"at %I:%M%p\")
+  \           #=> \"at 08:37AM\"\r\n\r\nControlling leading padding in Ruby 1.9\r\n
+  \ These codes work with any format code. %I is used as an example.\r\n  %-I - remove
+  any leading zeroes or spaces (“1”)\r\n  %_I - force a leading space (and no leading
+  zeroes) if necessary (“ 1”)\r\n  %0I - force a leading zero (and no leading spaces)
+  if necessary (“01”)"
