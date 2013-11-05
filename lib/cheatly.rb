@@ -1,6 +1,7 @@
 require "base64"
 require "json"
 require "tempfile"
+require "optparse"
 
 require "httparty"
 require "pager"
@@ -20,17 +21,33 @@ module Cheatly
         @handle = @command
         @commands = "show"
       end
+
+      @options = {}
+      op_parser = OptionParser.new do |opts|
+        opts.on("-l", "--local", "Run using local file system") do |v|
+          @options[:local] = v
+        end
+      end
+      op_parser.parse! args
+    end
+
+    def model
+      if @options[:local]
+        Sheet.with_file_adapter
+      else
+        Sheet
+      end
     end
 
     def sheet(handle)
-      sheet = Sheet.find(handle)
+      sheet = model.find(handle)
       page
       puts "#{sheet.title}:"
       puts sheet.to_s
     end
 
     def list
-      sheets = Sheet.all
+      sheets = model.all
       page
       puts "List of available cheat-sheets:"
       sheets.each do |sheet|
