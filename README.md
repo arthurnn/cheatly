@@ -13,6 +13,12 @@ Submit a PR, adding a file to `sheets` folder, with the cheat-sheet name.
 
 ## Usage
 
+### List all cheat sheets
+
+    $ cheatly list
+
+### Show a cheat sheet
+
     $ cheatly show gem_release
 
 ## Contributing
