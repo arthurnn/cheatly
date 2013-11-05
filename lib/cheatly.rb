@@ -14,7 +14,11 @@ module Cheatly
     def initialize(args)
       @command = args.shift || "help"
       @handle = args.first
-      @handle = @command if "help" == @command
+
+      if "help" == @command
+        @handle = @command
+        @commands = "show"
+      end
     end
 
     def sheet(handle)
@@ -24,8 +28,24 @@ module Cheatly
       puts sheet.to_s
     end
 
+    def list
+      sheets = Sheet.all
+      page
+      puts "List of available cheat-sheets:"
+      sheets.each do |sheet|
+        puts "  #{sheet.title}"
+      end
+    end
+
     def process
-      sheet(@handle)
+      case @command
+      when "show"
+        sheet(@handle)
+      when "list"
+        list
+      else
+        puts "Command [#{@command}] not found. :-("
+      end
     end
   end
 end

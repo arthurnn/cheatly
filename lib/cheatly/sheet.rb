@@ -16,6 +16,11 @@ module Cheatly
       Sheet.new(t, b)
     end
 
+    def self.all
+      handles = adapter.all
+      handles.map { |h| Sheet.new(h, nil) }
+    end
+
     def self.adapter
 #      @adapter ||= FileAdapter.new
       @adapter ||= GithubAdapter.new
@@ -42,6 +47,10 @@ module Cheatly
       Base64.decode64(json["content"])
     end
 
+    def all
+      response = self.class.get("#{base_path}/sheets")
+      json = JSON.parse(response.body)
+      json.map { |entry| entry["name"].gsub('.yml', '') }
+    end
   end
-
 end
