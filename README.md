@@ -1,7 +1,8 @@
 # Cheatly
 
 This is a command line toolset to handle the cheat-sheets reposity located at [sheets](https://github.com/arthurnn/cheatly/tree/master/sheets) folder.
-This gem is inspired by https://github.com/defunkt/cheat.
+
+This gem is not a fork but inspired by [defunkt/cheat](https://github.com/defunkt/cheat). However instead of using a full server to store the sheets, it uses github as central repository, making more reliable and easy to add new ones.
 
 ## Please, help. Adding a new cheat-sheet
 
