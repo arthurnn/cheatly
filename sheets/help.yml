@@ -1,0 +1,4 @@
+---
+help: ! "cheatly help\n------------\nusage: $cheatly list\n       To list the available
+  sheets\n\n       $cheatly show (sheetname)\n       To see the sheet\n\n       $cheatly
+  help\n       To see this\n       happy cheating !\n"
