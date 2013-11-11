@@ -90,7 +90,7 @@ module Cheatly
       when "new"
         create(@handle)
       else
-        puts "Command [#{@command}] not found. :-("
+        puts "Command [#{@command}] not found :-( . You can try running 'cheatly list' to check the available commands. "
       end
     end
   end
