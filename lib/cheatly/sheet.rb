@@ -1,15 +1,17 @@
 module Cheatly
   class Sheet
     attr_accessor :title, :body
-    def initialize(title, body)
+
+    def initialize(title, body = nil, options = {})
       @title, @body = title, body
+      @presisted = options[:persisted] || false
     end
 
     def to_s
       "  #{@body.gsub("\r",'').gsub("\n", "\n  ")}"
     end
 
-    def self.create(title, body)
+    def create
       adapter.create(title, body)
     end
 
@@ -17,9 +19,17 @@ module Cheatly
       adapter.update(title, body)
     end
 
+    def save
+      if @persisted
+        update
+      else
+        create
+      end
+    end
+
     def self.find(handle)
       t, b = adapter.find(handle)
-      Sheet.new(t, b)
+      Sheet.new(t, b, persisted: true)
     rescue ## TODO: this is bad, fix me
       nil
     end
@@ -39,6 +49,7 @@ module Cheatly
     end
 
     private
+
       def adapter
         self.class.adapter
       end

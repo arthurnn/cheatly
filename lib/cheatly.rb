@@ -60,21 +60,18 @@ module Cheatly
     end
 
     def create(handle)
-      body = write_to_tempfile(handle)
-      Sheet.with_file_adapter.create(handle, body)
+      sheet = Sheet.with_file_adapter.new(handle)
+      sheet.body = write_to_tempfile(handle)
+      sheet.save
     end
 
     def edit(handle)
-      Sheet.with_file_adapter
-
-      sheet = model.find(handle)
+      sheet = Sheet.with_file_adapter.find(handle)
       sheet.body = write_to_tempfile(handle, sheet.body)
-      sheet.update
+      sheet.save
     end
 
     def write_to_tempfile(title, body = nil)
-      # god dammit i hate tempfile, this is so messy but i think it's
-      # the only way.
       tempfile = Tempfile.new(title + '.yml')
       tempfile.write(body) if body
       tempfile.close
