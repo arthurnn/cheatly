@@ -18,6 +18,10 @@ Submit a PR, adding a file to `sheets` folder, with the cheat-sheet name.
 
 ## Usage
 
+### Help
+
+    $ cheatly help
+
 ### List all cheat sheets
 
     $ cheatly list
