@@ -19,7 +19,7 @@ module Cheatly
 
       if "help" == @command
         @handle = @command
-        @commands = "show"
+        @command = "show"
       end
 
       @options = {}
