@@ -64,6 +64,14 @@ module Cheatly
       Sheet.with_file_adapter.create(handle, body)
     end
 
+    def edit(handle)
+      Sheet.with_file_adapter
+
+      sheet = model.find(handle)
+      sheet.body = write_to_tempfile(handle, sheet.body)
+      sheet.update
+    end
+
     def write_to_tempfile(title, body = nil)
       # god dammit i hate tempfile, this is so messy but i think it's
       # the only way.
@@ -89,6 +97,8 @@ module Cheatly
         list
       when "new"
         create(@handle)
+      when "edit"
+        edit(@handle)
       else
         puts "Command [#{@command}] not found :-( . You can try running 'cheatly list' to check the available commands. "
       end

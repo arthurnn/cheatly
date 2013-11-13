@@ -13,6 +13,10 @@ module Cheatly
       adapter.create(title, body)
     end
 
+    def update
+      adapter.update(title, body)
+    end
+
     def self.find(handle)
       t, b = adapter.find(handle)
       Sheet.new(t, b)
@@ -33,6 +37,11 @@ module Cheatly
       @adapter = FileAdapter.new
       self
     end
+
+    private
+      def adapter
+        self.class.adapter
+      end
   end
 
   class FileAdapter
@@ -52,6 +61,11 @@ module Cheatly
       f = File.new "sheets/#{name}.yml", "w"
       f.write(body)
       f.close
+    end
+
+    def update(name, body)
+      File.delete "sheets/#{name}.yml"
+      create(name, body)
     end
   end
 
