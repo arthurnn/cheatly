@@ -44,8 +44,7 @@ Building from source will allow you to test changes to your code locally before 
 
 1. `git clone https://github.com/arthurnn/cheatly.git`
 2. `cd cheatly`
-3. `gem build cheatly.gemspec`
-4. `gem install cheatly-x.x.x.gem`
+3. `bundle exec rake install`
 
 Repeat steps 3-4 to check modified code.
 
