@@ -6,10 +6,14 @@ require "optparse"
 require "httparty"
 require "pager"
 
-require "cheatly/sheet"
+require "redcarpet"
+
 require "cheatly/version"
 
 module Cheatly
+  autoload :Sheet,     "cheatly/sheet"
+  autoload :Renderer,  "cheatly/renderer"
+
   class CLI
     include Pager
 
@@ -47,7 +51,9 @@ module Cheatly
       end
       page
       puts "#{sheet.title}:"
-      puts sheet.to_s
+      renderer = Renderer.new
+      md = Redcarpet::Markdown.new(renderer)
+      puts md.render(sheet.to_s)
     end
 
     def list
