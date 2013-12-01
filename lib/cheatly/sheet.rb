@@ -30,8 +30,8 @@ module Cheatly
     def self.find(handle)
       t, b = adapter.find(handle)
       Sheet.new(t, b, persisted: true)
-    rescue ## TODO: this is bad, fix me
-      nil
+    rescue RuntimeError => e
+      puts e.message
     end
 
     def self.all
