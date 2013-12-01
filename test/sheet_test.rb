@@ -1,12 +1,12 @@
 require 'test_helper'
 
-class SheetTest < MiniTest::Test
-  def test_sheet_find
+describe Cheatly::Sheet do
+  it 'find sheet' do
     sheet = Cheatly::Sheet.find("bash")
     assert sheet
   end
 
-  def test_sheet_list
+  it 'for #all return array' do
     sheets = Cheatly::Sheet.all
     assert sheets.is_a?(Array)
     assert sheets.any?
