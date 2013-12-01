@@ -7,5 +7,4 @@ rescue LoadError
   require 'cheatly'
 end
 
-c = Cheatly::CLI.new(ARGV)
-c.process
+Cheatly::CLI.start
