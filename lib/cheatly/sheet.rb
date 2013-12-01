@@ -97,7 +97,7 @@ module Cheatly
     end
 
     def all
-      response = self.class.get(base_path)
+      response = self.class.get(base_path, :headers => {"User-Agent" => "Cheatly"})
       json = JSON.parse(response.body)
       json.map { |entry| entry["name"].gsub('.yml', '') }
     end
