@@ -1,6 +1,6 @@
-require File.expand_path '../test_helper.rb', __FILE__
+require 'test_helper'
 
-class SheetTest < MiniTest::Unit::TestCase
+class SheetTest < MiniTest::Test
   def test_sheet_find
     sheet = Cheatly::Sheet.find("bash")
     assert sheet
