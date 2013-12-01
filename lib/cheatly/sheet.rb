@@ -89,7 +89,7 @@ module Cheatly
     end
 
     def find(path)
-      response = self.class.get("#{base_path}/#{path}.yml")
+      response = self.class.get("#{base_path}/#{path}.yml", :headers => {"User-Agent" => "Cheatly"})
       json = JSON.parse(response.body)
       sheet_yaml = Base64.decode64(json["content"])
       yml = YAML.load(sheet_yaml).first
