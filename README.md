@@ -38,6 +38,16 @@ Submit a PR, adding a file to `sheets` folder, with the cheat-sheet name.
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
+## Build from source
+
+Building from source will allow you to test changes to your code locally before pushing it back to origin.
+
+1. `git clone https://github.com/arthurnn/cheatly.git`
+2. `cd cheatly`
+3. `bundle exec rake install`
+
+Repeat steps 3-4 to check modified code.
+
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/arthurnn/cheatly/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
