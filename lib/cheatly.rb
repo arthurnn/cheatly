@@ -46,7 +46,7 @@ module Cheatly
         return
       end
       page
-      exec "man", "#{sheet.path}"
+      sheet.display
     end
 
     def list

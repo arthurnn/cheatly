@@ -25,6 +25,14 @@ module Cheatly
       end
     end
 
+    def man_path
+      "sheets/#{title}.1"
+    end
+
+    def display
+      exec "man", man_path
+    end
+
     def self.find(handle)
       with_file_adapter
       sheet = adapter.find(handle)
