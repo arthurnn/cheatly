@@ -1,3 +1,6 @@
+require "tempfile"
+require "yaml"
+
 module Cheatly
   module Adapter
     class File
@@ -20,7 +23,7 @@ module Cheatly
       end
 
       def update(name, body)
-        File.delete("sheets/#{name}.yml")
+        ::File.delete("sheets/#{name}.yml")
         create(name, body)
       end
     end

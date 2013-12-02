@@ -1,3 +1,6 @@
+require "pager"
+require "optparse"
+
 module Cheatly
   class CLI
     include Pager
