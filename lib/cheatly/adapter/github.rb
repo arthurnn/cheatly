@@ -1,29 +1,22 @@
-require 'httparty'
+require "base64"
+require "yaml"
+
+require "octokit"
 
 module Cheatly
   module Adapter
     class GitHub
-      include ::HTTParty
-      base_uri 'https://api.github.com'
-
-      def headers
-        { :headers => {"User-Agent" => "Cheatly Gem"} }
-      end
-
-      def base_path
-        "/repos/arthurnn/cheatly/contents/sheets"
-      end
+      FOLDER = 'sheets'
+      REPO = 'arthurnn/cheatly'
 
       def find(path)
-        response = self.class.get("#{base_path}/#{path}.md", headers)
-        json = JSON.parse(response.body)
-        Base64.decode64(json["content"])
+        response = Octokit.contents(REPO, path: "#{FOLDER}/#{path}.md")
+        Base64.decode64(response.content)
       end
 
       def all
-        response = self.class.get(base_path, headers)
-        json = JSON.parse(response.body)
-        json.map { |entry| entry["name"].gsub('.md', '') }
+        response = Octokit.contents(REPO, path: "#{FOLDER}")
+        response.map { |f| f.name.gsub(/\.[a-z]+\z/, '') }
       end
 
       def create
