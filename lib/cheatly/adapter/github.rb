@@ -15,17 +15,15 @@ module Cheatly
       end
 
       def find(path)
-        response = self.class.get("#{base_path}/#{path}.yml", headers)
+        response = self.class.get("#{base_path}/#{path}.md", headers)
         json = JSON.parse(response.body)
-        sheet_yaml = Base64.decode64(json["content"])
-        yml = YAML.load(sheet_yaml).first
-        [yml.first, yml.last]
+        Base64.decode64(json["content"])
       end
 
       def all
         response = self.class.get(base_path, headers)
         json = JSON.parse(response.body)
-        json.map { |entry| entry["name"].gsub('.yml', '') }
+        json.map { |entry| entry["name"].gsub('.md', '') }
       end
 
       def create

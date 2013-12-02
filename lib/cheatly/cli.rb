@@ -42,7 +42,7 @@ module Cheatly
       end
       page
       renderer = Renderer.new
-      md = Redcarpet::Markdown.new(renderer)
+      md = Redcarpet::Markdown.new(renderer, no_intra_emphasis: true)
       puts md.render(sheet.to_s)
     end
 

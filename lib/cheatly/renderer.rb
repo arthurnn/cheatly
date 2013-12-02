@@ -6,12 +6,12 @@ module Cheatly
       text
     end
 
-    def block_code(code, language)
+    def block_code(code, language = nil)
       code
     end
 
     def codespan(code)
-      block_code(code)
+      "`#{block_code(code)}`"
     end
 
     def header(title, level)
@@ -21,7 +21,7 @@ module Cheatly
       when 3 then '-'
       end
 
-      "#{title}\n#{sep * title.length}".bold
+      "\n#{title.bold}\n#{(sep * title.length).bold}\n"
     end
 
     def double_emphasis(text)
@@ -29,15 +29,15 @@ module Cheatly
     end
 
     def emphasis(text)
-      text.underscore
+      text.underline
+    end
+
+    def paragraph(text)
+      "#{text}\n"
     end
 
     def linebreak
       "\n"
-    end
-
-    def paragraph(text)
-      text
     end
 
     def list(content, list_type)
@@ -45,7 +45,9 @@ module Cheatly
     end
 
     def list_item(content, list_type)
-      " - #{content}\n"
+      lines = content.each_line
+      lines = lines.map { |l| "   #{l}" }
+      " - #{lines.join.strip}\n"
     end
 
     def image(color, bg_color, text)
