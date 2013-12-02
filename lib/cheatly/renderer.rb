@@ -25,11 +25,11 @@ module Cheatly
     end
 
     def double_emphasis(text)
-      text.bold.underscore
+      text.bold
     end
 
     def emphasis(text)
-      text.bold
+      text.underscore
     end
 
     def linebreak
@@ -46,6 +46,13 @@ module Cheatly
 
     def list_item(content, list_type)
       " - #{content}"
+    end
+
+    def image(color, bg_color, text)
+      text = text.colorize(color: color.to_sym)
+      text = text.colorize(background: bg_color.to_sym) if bg_color
+
+      text
     end
   end
 end
