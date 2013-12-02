@@ -1,14 +1,12 @@
+require 'kramdown/man'
+
 module Cheatly
   class Sheet
-    attr_accessor :title, :body
+    attr_accessor :title, :path
 
-    def initialize(title, body = nil, options = {})
-      @title, @body = title, body
+    def initialize(title, path, options = {})
+      @title, @path = title, path
       @presisted = options[:persisted] || false
-    end
-
-    def to_s
-      "  #{@body.gsub("\r",'').gsub("\n", "\n  ")}"
     end
 
     def create
@@ -28,8 +26,9 @@ module Cheatly
     end
 
     def self.find(handle)
-      t, b = adapter.find(handle)
-      Sheet.new(t, b, persisted: true)
+      with_file_adapter
+      sheet = adapter.find(handle)
+      sheet 
     rescue RuntimeError => e
       puts e.message
     end
@@ -57,25 +56,37 @@ module Cheatly
 
   class FileAdapter
     def find(name)
-      path = "sheets/#{name}.yml"
-      sheet_yaml = File.read(path)
-      yml = YAML.load(sheet_yaml).first
-      [yml.first, yml.last]
+      path = "sheets/#{name}.md"
+
+      if File.exists?("sheets/#{name}.1")
+        return Sheet.new(name, "sheets/#{name}.1", persisted: true)
+      end
+
+      sheet_markdown = File.read(path)
+      #assume target is manpage for now, but we can do others later
+      
+      doc = Kramdown::Document.new(sheet_markdown)
+
+      manpage = File.open("./sheets/#{name}.1", "w")
+      manpage.write(doc.to_man)
+      manpage.close
+
+      Sheet.new(name, manpage.path, persisted: true)
     end
 
     def all
-      Dir["sheets/*.yml"].map { |f| f.scan(/sheets\/(.*).yml/)[0][0] }
+      Dir["sheets/*.md"].map { |f| f.scan(/sheets\/(.*).md/)[0][0] }
     end
 
     def create(name, body)
       body = {name => body}.to_yaml
-      f = File.new "sheets/#{name}.yml", "w"
+      f = File.new "sheets/#{name}.md", "w"
       f.write(body)
       f.close
     end
 
     def update(name, body)
-      File.delete "sheets/#{name}.yml"
+      File.delete "sheets/#{name}.md"
       create(name, body)
     end
   end
@@ -93,7 +104,7 @@ module Cheatly
     end
 
     def find(path)
-      response = self.class.get("#{base_path}/#{path}.yml", headers)
+      response = self.class.get("#{base_path}/#{path}.md", headers)
       json = JSON.parse(response.body)
       sheet_yaml = Base64.decode64(json["content"])
       yml = YAML.load(sheet_yaml).first
@@ -103,7 +114,7 @@ module Cheatly
     def all
       response = self.class.get(base_path, headers)
       json = JSON.parse(response.body)
-      json.map { |entry| entry["name"].gsub('.yml', '') }
+      json.map { |entry| entry["name"].gsub('.md', '') }
     end
 
     def create

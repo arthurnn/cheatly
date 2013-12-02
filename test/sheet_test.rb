@@ -2,7 +2,7 @@ require 'test_helper'
 
 class SheetTest < MiniTest::Test
   def test_sheet_find
-    sheet = Cheatly::Sheet.find("bash")
+    sheet = Cheatly::Sheet.find("help")
     assert sheet
   end
 
