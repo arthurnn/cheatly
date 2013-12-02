@@ -1,6 +1,6 @@
 # Cheatly
 
-[![Build Status](https://travis-ci.org/arthurnn/cheatly.png)](https://travis-ci.org/arthurnn/cheatly)
+[![Build Status](https://travis-ci.org/arthurnn/cheatly.png?branch=master)](https://travis-ci.org/arthurnn/cheatly)
 
 This is a command line toolset to handle the cheat-sheets reposity located at [sheets](https://github.com/arthurnn/cheatly/tree/master/sheets) folder.
 
