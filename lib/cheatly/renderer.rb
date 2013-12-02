@@ -45,7 +45,7 @@ module Cheatly
     end
 
     def list_item(content, list_type)
-      " - #{content}"
+      " - #{content}\n"
     end
 
     def image(color, bg_color, text)
