@@ -46,7 +46,7 @@ a {
   overflow: auto;
   height: 500px;
   width: 750px;
-  font-family: Inconsolata, Ubuntu Mono, Consolas, monospace;
+  font-family: Inconsolata, Ubuntu Mono, Consolas, monaco, monospace;
 }
 
 .macbook:after {
