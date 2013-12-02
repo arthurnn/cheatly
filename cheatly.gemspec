@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "httparty", "~> 0.12.0"
+  spec.add_dependency "octokit", "~> 2.6.1"
   spec.add_dependency "pager", "~> 1.0.1"
 
   spec.add_development_dependency "bundler", ">= 1.3"
