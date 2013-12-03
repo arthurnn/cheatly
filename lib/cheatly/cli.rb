@@ -1,5 +1,8 @@
 require "pager"
 require "optparse"
+require "redcarpet"
+
+require "cheatly/renderer"
 
 module Cheatly
   class CLI
@@ -38,8 +41,9 @@ module Cheatly
         return
       end
       page
-      puts "#{sheet.title}:"
-      puts sheet.to_s
+      renderer = Renderer.new
+      md = Redcarpet::Markdown.new(renderer)
+      puts md.render(sheet.to_s)
     end
 
     def list
