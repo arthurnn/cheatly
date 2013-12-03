@@ -46,8 +46,7 @@ module Cheatly
         return
       end
       page
-      puts "#{sheet.title}:"
-      puts sheet.to_s
+      sheet.display
     end
 
     def list
