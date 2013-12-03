@@ -1,11 +1,8 @@
 require "cheatly/version"
+require "cheatly/cli"
+require "cheatly/sheet"
+require "cheatly/adapter/file"
+require "cheatly/adapter/github"
 
 module Cheatly
-  autoload :Sheet, "cheatly/sheet"
-  autoload :CLI, "cheatly/cli"
-
-  module Adapter
-    autoload :File, "cheatly/adapter/file"
-    autoload :GitHub, "cheatly/adapter/github"
-  end
 end
