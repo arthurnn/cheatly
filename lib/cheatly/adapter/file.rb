@@ -5,25 +5,23 @@ module Cheatly
   module Adapter
     class File
       def find(name)
-        path = "sheets/#{name}.yml"
-        sheet_yaml = ::File.read(path)
-        yml = YAML.load(sheet_yaml).first
-        [yml.first, yml.last]
+        path = "sheets/#{name}.md"
+        ::File.read(path)
       end
 
       def all
-        Dir["sheets/*.yml"].map { |f| f.scan(/sheets\/(.*).yml/)[0][0] }
+        Dir["sheets/*.md"].map { |f| f.scan(/sheets\/(.*).md/)[0][0] }
       end
 
       def create(name, body)
         body = {name => body}.to_yaml
-        f = ::File.new("sheets/#{name}.yml", "w")
+        f = ::File.new("sheets/#{name}.md", "w")
         f.write(body)
         f.close
       end
 
       def update(name, body)
-        ::File.delete("sheets/#{name}.yml")
+        ::File.delete("sheets/#{name}.md")
         create(name, body)
       end
     end
