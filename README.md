@@ -1,5 +1,7 @@
 # Cheatly
 
+[![Build Status](https://travis-ci.org/arthurnn/cheatly.png?branch=master)](https://travis-ci.org/arthurnn/cheatly)
+
 This is a command line toolset to handle the cheat-sheets reposity located at [sheets](https://github.com/arthurnn/cheatly/tree/master/sheets) folder.
 
 This gem is not a fork but inspired by [defunkt/cheat](https://github.com/defunkt/cheat). However instead of using a full server to store the sheets, it uses github as central repository, making more reliable and easy to add new ones.
@@ -37,6 +39,16 @@ Submit a PR, adding a file to `sheets` folder, with the cheat-sheet name.
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Build from source
+
+Building from source will allow you to test changes to your code locally before pushing it back to origin.
+
+1. `git clone https://github.com/arthurnn/cheatly.git`
+2. `cd cheatly`
+3. `bundle exec rake install`
+
+Repeat steps 3-4 to check modified code.
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/arthurnn/cheatly/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
