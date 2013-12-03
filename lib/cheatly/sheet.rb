@@ -8,7 +8,7 @@ module Cheatly
     end
 
     def to_s
-      "  #{@body.gsub("\r",'').gsub("\n", "\n  ")}"
+      body.to_s
     end
 
     def create
@@ -27,9 +27,9 @@ module Cheatly
       end
     end
 
-    def self.find(handle)
-      t, b = adapter.find(handle)
-      Sheet.new(t, b, persisted: true)
+    def self.find(name)
+      body = adapter.find(name)
+      Sheet.new(name, body, persisted: true)
     rescue RuntimeError => e
       puts e.message
     end
@@ -57,25 +57,23 @@ module Cheatly
 
   class FileAdapter
     def find(name)
-      path = "sheets/#{name}.yml"
-      sheet_yaml = File.read(path)
-      yml = YAML.load(sheet_yaml).first
-      [yml.first, yml.last]
+      path = "sheets/#{name}.md"
+      File.read(path)
     end
 
     def all
-      Dir["sheets/*.yml"].map { |f| f.scan(/sheets\/(.*).yml/)[0][0] }
+      Dir["sheets/*.md"].map { |f| f.scan(/sheets\/(.*).md/)[0][0] }
     end
 
     def create(name, body)
       body = {name => body}.to_yaml
-      f = File.new "sheets/#{name}.yml", "w"
+      f = File.new "sheets/#{name}.md", "w"
       f.write(body)
       f.close
     end
 
     def update(name, body)
-      File.delete "sheets/#{name}.yml"
+      File.delete "sheets/#{name}.md"
       create(name, body)
     end
   end
@@ -93,17 +91,15 @@ module Cheatly
     end
 
     def find(path)
-      response = self.class.get("#{base_path}/#{path}.yml", headers)
+      response = self.class.get("#{base_path}/#{path}.md", headers)
       json = JSON.parse(response.body)
-      sheet_yaml = Base64.decode64(json["content"])
-      yml = YAML.load(sheet_yaml).first
-      [yml.first, yml.last]
+      Base64.decode64(json["content"])
     end
 
     def all
       response = self.class.get(base_path, headers)
       json = JSON.parse(response.body)
-      json.map { |entry| entry["name"].gsub('.yml', '') }
+      json.map { |entry| entry["name"].gsub('.md', '') }
     end
 
     def create
