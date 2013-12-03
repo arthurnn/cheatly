@@ -1,7 +1,9 @@
+require 'httparty'
+
 module Cheatly
   module Adapter
     class GitHub
-      include HTTParty
+      include ::HTTParty
       base_uri 'https://api.github.com'
 
       def headers
