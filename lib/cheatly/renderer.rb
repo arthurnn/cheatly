@@ -7,11 +7,13 @@ module Cheatly
     end
 
     def block_code(code, language = nil)
-      code
+      code = code.each_line
+      code = code.map { |l| "    #{l}" }
+      "\n#{code.join}\n"
     end
 
     def codespan(code)
-      "`#{block_code(code)}`"
+      "`#{code}`"
     end
 
     def header(title, level)
