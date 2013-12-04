@@ -1,0 +1,445 @@
+/*******************************************
+				   Globais
+*******************************************/
+/* line 7, scss/style.scss */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video, button, input, select, textarea {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* line 8, scss/style.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 9, scss/style.scss */
+html {
+  overflow-y: scroll;
+}
+
+/* line 10, scss/style.scss */
+body {
+  font: 13px/1.231 sans-serif;
+  *font-size: small;
+}
+
+/* line 11, scss/style.scss */
+body, select, input, textarea {
+  color: #444;
+}
+
+/* line 13, scss/style.scss */
+outline {
+  border: none;
+}
+
+/* line 15, scss/style.scss */
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+/* line 16, scss/style.scss */
+label, input[type="button"], input[type="submit"], input[type="image"], button {
+  cursor: pointer;
+}
+
+/* line 17, scss/style.scss */
+input[type="radio"] {
+  vertical-align: text-bottom;
+}
+
+/* line 18, scss/style.scss */
+input[type="checkbox"] {
+  vertical-align: bottom;
+}
+
+/* line 19, scss/style.scss */
+.ie7 input[type="checkbox"] {
+  vertical-align: baseline;
+}
+
+/* line 20, scss/style.scss */
+.ie6 input {
+  vertical-align: text-bottom;
+}
+
+/* line 21, scss/style.scss */
+ol {
+  list-style-type: decimal;
+}
+
+/* line 22, scss/style.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 23, scss/style.scss */
+nav ul, nav li {
+  list-style: none;
+}
+
+/* line 25, scss/style.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 26, scss/style.scss */
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+/* line 27, scss/style.scss */
+a {
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* line 29, scss/style.scss */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/* line 30, scss/style.scss */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+/* line 31, scss/style.scss */
+del {
+  text-decoration: line-through;
+}
+
+/* line 32, scss/style.scss */
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+}
+
+/* line 33, scss/style.scss */
+sup {
+  top: -0.5em;
+}
+
+/* line 34, scss/style.scss */
+sub {
+  bottom: -0.25em;
+}
+
+/* line 35, scss/style.scss */
+pre {
+  padding: 15px;
+  white-space: pre;
+  white-space: pre-wrap;
+  white-space: pre-line;
+  word-wrap: break-word;
+}
+
+/* line 36, scss/style.scss */
+strong {
+  font-weight: bold;
+}
+
+/* line 37, scss/style.scss */
+small {
+  font-size: 85%;
+}
+
+/* line 39, scss/style.scss */
+select, input, textarea, button {
+  font: 99% sans-serif;
+}
+
+/* line 40, scss/style.scss */
+input, select {
+  vertical-align: middle;
+}
+
+/* line 41, scss/style.scss */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/* line 42, scss/style.scss */
+pre, code, kbd, samp {
+  font-family: monospace, sans-serif;
+}
+
+/* line 43, scss/style.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 44, scss/style.scss */
+.ie7 img {
+  -ms-interpolation-mode: bicubic;
+}
+
+/* line 45, scss/style.scss */
+button {
+  width: auto;
+  overflow: visible;
+}
+
+/* line 46, scss/style.scss */
+textarea {
+  overflow: auto;
+}
+
+/* line 47, scss/style.scss */
+.ie6 legend, .ie7 legend {
+  margin-left: -7px;
+}
+
+/* line 49, scss/style.scss */
+a:hover, a:active {
+  outline: none;
+}
+
+/* line 50, scss/style.scss */
+::-moz-selection {
+  background: #000;
+  color: #fff;
+  text-shadow: none;
+}
+
+/* line 51, scss/style.scss */
+::selection {
+  background: #000;
+  color: #fff;
+  text-shadow: none;
+}
+
+/* line 52, scss/style.scss */
+a:link {
+  -webkit-tap-highlight-color: #444;
+}
+
+/* line 55, scss/style.scss */
+input:invalid, textarea:invalid {
+  border-radius: 1px;
+  -moz-box-shadow: 0px 0px 5px red;
+  -webkit-box-shadow: 0px 0px 5px red;
+  box-shadow: 0px 0px 5px red;
+}
+
+/* line 56, scss/style.scss */
+.no-boxshadow input:invalid, .no-boxshadow textarea:invalid {
+  background-color: #f0dddd;
+}
+
+/* line 58, scss/style.scss */
+body {
+  min-width: 990px;
+  font: normal 14px/21px "Trebuchet MS", Arial, sans-serif;
+}
+
+/* line 59, scss/style.scss */
+.in {
+  width: 960px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+/*******************************************
+				   Header
+*******************************************/
+/* line 7, scss/_header.scss */
+#forkit {
+  float: left;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 149px;
+  height: 149px;
+  background: url("../images/forkit.png") repeat left top;
+  text-indent: -9999em;
+  z-index: 2;
+}
+
+/* line 19, scss/_header.scss */
+#header {
+  float: left;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(41, 41, 41, 0.9);
+  height: 45px;
+  padding: 25px 0 0;
+  z-index: 1;
+  text-align: center;
+}
+/* line 31, scss/_header.scss */
+#header h1 a {
+  float: left;
+  color: #fff;
+  text-transform: uppercase;
+  font: bold 46px/50px "Trebuchet MS", Arial, sans-serif;
+  text-decoration: none;
+  margin-top: 8px;
+}
+/* line 40, scss/_header.scss */
+#header ul {
+  float: right;
+  list-style: none;
+  margin-top: 25px;
+}
+/* line 46, scss/_header.scss */
+#header li {
+  float: left;
+}
+/* line 50, scss/_header.scss */
+#header a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-height: 27px;
+  margin: 0 20px;
+}
+
+/*******************************************
+				   Footer
+*******************************************/
+/* line 7, scss/_footer.scss */
+#footer {
+  float: left;
+  width: 100%;
+  padding: 15px 0;
+  background: #859987;
+}
+/* line 13, scss/_footer.scss */
+#footer p {
+  float: left;
+  color: #fff;
+}
+/* line 18, scss/_footer.scss */
+#footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/*******************************************
+				   Main
+*******************************************/
+/* line 68, scss/style.scss */
+.button {
+  appearance: none;
+  transition: all 250ms ease;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+  background: #6DA67A;
+  border-radius: 3px;
+  text-decoration: none;
+  padding: 21px 25px 24px;
+  line-height: 1;
+  cursor: pointer;
+  margin: 10px 15px;
+  border: 0 none;
+}
+
+/* line 86, scss/style.scss */
+.button:hover {
+  background: #86C28B;
+}
+
+/* line 90, scss/style.scss */
+section {
+  float: left;
+  width: 100%;
+  padding: 50px 0;
+  background: white url("../images/pattern-light.png") repeat left top;
+}
+/* line 96, scss/style.scss */
+section:nth-child(odd) {
+  background: white url("../images/pattern-dark.png") repeat left top;
+  border-top: 1px solid #c8c8c8;
+  border-bottom: 1px solid #c8c8c8;
+}
+/* line 101, scss/style.scss */
+section:nth-child(odd) p {
+  color: #fff !important;
+}
+/* line 102, scss/style.scss */
+section:nth-child(odd) h4 {
+  color: #fff !important;
+}
+
+/* line 106, scss/style.scss */
+h3 {
+  float: left;
+  width: 100%;
+  color: #859987;
+  font: normal 36px/50px "Trebuchet MS", Arial, sans-serif;
+  margin-bottom: 15px;
+}
+
+/* line 114, scss/style.scss */
+h4 {
+  width: 100%;
+  color: #414141;
+  margin-bottom: 15px;
+  font: bold 24px/30px "Trebuchet MS", Arial, sans-serif;
+}
+
+/* line 122, scss/style.scss */
+p {
+  margin: 10px 0;
+}
+
+/* line 126, scss/style.scss */
+ol {
+  list-style-position: inside;
+  margin-bottom: 20px;
+}
+/* line 130, scss/style.scss */
+ol strong {
+  font-family: monospace;
+}
+
+/* line 133, scss/style.scss */
+code {
+  border: 2px solid #5a9b9b;
+  background: #fff;
+  color: #4A4857;
+  padding: 7px 10px;
+  border-radius: 5px;
+  margin: 20px 0;
+  display: block;
+}
+
+/* line 143, scss/style.scss */
+#main {
+  padding-top: 100px;
+  text-align: center;
+}
+/* line 147, scss/style.scss */
+#main h2 {
+  float: left;
+  width: 100%;
+  color: #859987;
+  font: bold 72px/100px "Trebuchet MS", Arial, sans-serif;
+}

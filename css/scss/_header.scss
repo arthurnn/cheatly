@@ -1,0 +1,57 @@
+@charset "utf-8";
+
+/*******************************************
+				   Header
+*******************************************/
+
+#forkit {
+	float:left;
+	position: fixed;
+	right:0;
+	top:0;
+	width: 149px;
+	height: 149px;
+	background: url('../images/forkit.png') repeat left top;
+	text-indent: -9999em;
+	z-index:2;
+}
+
+#header {
+	float:left;
+	position: fixed;
+	top:0;
+	left:0;
+	width:100%;
+	background: rgba(41,41,41,.9);;
+	height: 45px;
+	padding: 25px 0 0 ;
+	z-index:1;
+	text-align: center;
+
+	h1 a {
+		float:left;
+		color:#fff;
+		text-transform: uppercase;
+		font: bold 46px/50px "Trebuchet MS", Arial, sans-serif;;
+		text-decoration: none;
+		margin-top: 8px;
+	}
+
+	ul {
+		float:right;
+		list-style:none;
+		margin-top: 25px;
+	}
+
+	li {
+		float:left;
+	}
+
+	a {
+		color:#fff;
+		text-decoration: none;
+		font-size: 18px;
+		font-height: 27px;
+		margin: 0 20px;
+	}
+}
