@@ -11,8 +11,9 @@ This gem is not a fork but inspired by [defunkt/cheat](https://github.com/defunk
 Submit a PR, adding a file to `sheets` folder, with the cheat-sheet name.
 
 1. Fork it
-2. `cheatly new name` (replacing name with name of the sheet)
-3. Create new Pull Request
+1. `cheatly new name` (replacing name with name of the sheet)
+1. `cheatly show name --local` to test your new sheet
+1. Create new Pull Request
 
 ## Installation
 
