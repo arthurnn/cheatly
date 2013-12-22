@@ -1,40 +1,25 @@
+require "cheatly/version"
+require "cheatly/sheet"
+require "cheatly/adapter/file"
+require "cheatly/adapter/github"
+
 require "pager"
 require "optparse"
 require "redcarpet"
 
 require "cheatly/renderer"
+require "thor"
 
 module Cheatly
-  class CLI
+  class CLI < Thor
     include Pager
 
-    def initialize(args)
-      @command = args.shift || "help"
-      @handle = args.first
+    class_option :local, type: :boolean, aliases: "-l", desc: "Run using local file system"
 
-      if "help" == @command
-        @handle = @command
-        @command = "show"
-      end
+    default_task :help
 
-      @options = {}
-      op_parser = OptionParser.new do |opts|
-        opts.on("-l", "--local", "Run using local file system") do |v|
-          @options[:local] = v
-        end
-      end
-      op_parser.parse! args
-    end
-
-    def model
-      if @options[:local]
-        Sheet.with_file_adapter
-      else
-        Sheet
-      end
-    end
-
-    def sheet(handle)
+    desc "show SHEET_NAME", "show a cheat sheet"
+    def show(handle)
       sheet = model.find(handle)
       unless sheet
         puts "Sheet not found, run 'cheatly list' to see the availables."
@@ -46,6 +31,7 @@ module Cheatly
       puts md.render(sheet.to_s)
     end
 
+    desc "list sheets", "list all available sheets"
     def list
       sheets = model.all
       page
@@ -55,16 +41,28 @@ module Cheatly
       end
     end
 
+    desc "create SHEET_NAME", ""
     def create(handle)
       sheet = Sheet.with_file_adapter.new(handle)
       sheet.body = write_to_tempfile(handle)
       sheet.save
     end
 
+    desc "edit SHEET_NAME", ""
     def edit(handle)
       sheet = Sheet.with_file_adapter.find(handle)
       sheet.body = write_to_tempfile(handle, sheet.body)
       sheet.save
+    end
+
+    private
+
+    def model
+      if options[:local]
+        Sheet.with_file_adapter
+      else
+        Sheet
+      end
     end
 
     def write_to_tempfile(title, body = nil)
@@ -80,21 +78,6 @@ module Cheatly
 
     def editor
       ENV['VISUAL'] || ENV['EDITOR'] || "nano"
-    end
-
-    def process
-      case @command
-      when "show"
-        sheet(@handle)
-      when "list"
-        list
-      when "new"
-        create(@handle)
-      when "edit"
-        edit(@handle)
-      else
-        puts "Command [#{@command}] not found :-( . You can try running 'cheatly list' to check the available commands. "
-      end
     end
   end
 end
