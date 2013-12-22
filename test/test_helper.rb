@@ -1,2 +1,2 @@
-require './lib/cheatly'
+require 'cheatly/cli'
 require 'minitest/autorun'
