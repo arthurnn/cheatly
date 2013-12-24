@@ -41,14 +41,14 @@ module Cheatly
       end
     end
 
-    desc "create SHEET_NAME", ""
+    desc "create SHEET_NAME", "create a new sheet cheat"
     def create(handle)
       sheet = Sheet.with_file_adapter.new(handle)
       sheet.body = write_to_tempfile(handle)
       sheet.save
     end
 
-    desc "edit SHEET_NAME", ""
+    desc "edit SHEET_NAME", "edit an existent sheet cheat"
     def edit(handle)
       sheet = Sheet.with_file_adapter.find(handle)
       sheet.body = write_to_tempfile(handle, sheet.body)
