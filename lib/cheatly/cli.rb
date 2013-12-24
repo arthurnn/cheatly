@@ -12,8 +12,6 @@ module Cheatly
 
     class_option :local, type: :boolean, aliases: "-l", desc: "Run using local file system"
 
-    default_task :help
-
     desc "show SHEET_NAME", "show a cheat sheet"
     def show(handle)
       sheet = model.find(handle)
@@ -48,6 +46,11 @@ module Cheatly
       sheet = Sheet.with_file_adapter.find(handle)
       sheet.body = write_to_tempfile(handle, sheet.body)
       sheet.save
+    end
+
+    desc "help", "help"
+    def help
+      show('help')
     end
 
     private
