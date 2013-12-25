@@ -4,7 +4,7 @@ module Cheatly
 
     def initialize(title, body = nil, options = {})
       @title, @body = title, body
-      @presisted = options[:persisted] || false
+      @persisted = options[:persisted] || false
     end
 
     def to_s
