@@ -60,27 +60,27 @@ module Cheatly
 
     private
 
-    def model
-      if options[:local]
-        Sheet.with_file_adapter
-      else
-        Sheet
+      def model
+        if options[:local]
+          Sheet.with_file_adapter
+        else
+          Sheet
+        end
       end
-    end
 
-    def write_to_tempfile(title, body = nil)
-      tempfile = Tempfile.new(title + '.yml')
-      tempfile.write(body) if body
-      tempfile.close
-      system "#{editor} #{tempfile.path}"
-      tempfile.open
-      body = tempfile.read
-      tempfile.close
-      body
-    end
+      def write_to_tempfile(title, body = nil)
+        tempfile = Tempfile.new(title + '.yml')
+        tempfile.write(body) if body
+        tempfile.close
+        system "#{editor} #{tempfile.path}"
+        tempfile.open
+        body = tempfile.read
+        tempfile.close
+        body
+      end
 
-    def editor
-      ENV['VISUAL'] || ENV['EDITOR'] || "nano"
-    end
+      def editor
+        ENV['VISUAL'] || ENV['EDITOR'] || "nano"
+      end
   end
 end
