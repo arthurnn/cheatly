@@ -30,6 +30,8 @@ module Cheatly
     def self.find(name)
       body = adapter.find(name)
       Sheet.new(name, body, persisted: true)
+    rescue Octokit::NotFound => e
+      nil
     rescue RuntimeError => e
       puts e.message
     end
