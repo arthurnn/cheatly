@@ -57,6 +57,12 @@ module Cheatly
       show('help')
     end
 
+    desc "version", "Prints cheatly's version"
+    def version
+      puts "Cheatly version #{Cheatly::VERSION}"
+    end
+    map %w(-v --version) => :version
+
     private
 
       def model
