@@ -1,6 +1,4 @@
 require "base64"
-require "yaml"
-
 require "octokit"
 
 module Cheatly

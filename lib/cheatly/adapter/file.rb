@@ -1,5 +1,4 @@
 require "tempfile"
-require "yaml"
 
 module Cheatly
   module Adapter
