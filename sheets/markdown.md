@@ -1,30 +1,30 @@
----
-markdown: |
- Headings:
+# markdown
+
+## Headings:
 
    # h1      => <h1>h1</h1>
    ## h2     => <h2>h2</h2>
    ...
    ###### h6 => <h6>h6</h6>
 
- Paragraphs
+## Paragraphs
 
    Separate paragraphs with double newlines.  => <p>Separate paragraphs with double newlines.</p>
 
    This is a second paragraph.                => <p>This is a second paragraph.
    This is not a third paragraph.             => This is not a third paragraph.</p>
 
- Blockquotes:
-                                  => <blockquote>
-   > This is a quote.             =>   <p>This is a quote. You can use multiple lines.</p>
-   > You can use multiple lines.  => </blockquote>
+## Blockquotes:
+                                   => <blockquote>
+    > This is a quote.             =>   <p>This is a quote. You can use multiple lines.</p>
+    > You can use multiple lines.  => </blockquote>
 
- Code:
+## Code:
 
-   `code goes here` => <code>code goes here</code>
+  `code goes here` => <code>code goes here</code>
 
-  Lists:
-             =>   <ul>
+##  Lists:
+           =>   <ul>
    * item 1  =>     <li>item 1</li>
    * item 2  =>     <li>item 2</li>
    * item 3  =>     <li>item 3</li>
@@ -36,15 +36,15 @@ markdown: |
    1. item 3 =>     <li>item 3</li>
              =>   </ol>
 
- Inline:
+## Inline:
 
    *emphasis* => <em>emphasis</em>
    **strong** => <strong>strong</strong>
 
- Links:
+## Links:
 
    [Text to display](http://example.com/)  => <a href='http://example.com'>Text to display</a>
 
- Images:
+## Images:
 
   ![alt text](/path/to/image.jpg)  => <img src='/path/to/image.jpg alt='alt text' />
