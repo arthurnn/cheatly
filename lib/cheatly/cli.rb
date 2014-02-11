@@ -1,13 +1,13 @@
+require "pager"
+require "optparse"
+require "redcarpet"
+require "thor"
+
 require "cheatly/version"
 require "cheatly/sheet"
 require "cheatly/adapter/file"
 require "cheatly/adapter/github"
 require "cheatly/renderer"
-
-require "pager"
-require "optparse"
-require "redcarpet"
-require "thor"
 
 module Cheatly
   class CLI < Thor
