@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "octokit", "~> 2.6.1"
+  spec.add_dependency "octokit", "~> 2.7.1"
   spec.add_dependency "pager", "~> 1.0.1"
   spec.add_dependency "redcarpet", "~> 3.0.0"
   spec.add_dependency "colorize", "~> 0.6.0"
