@@ -8,7 +8,7 @@ module Cheatly
     end
 
     def to_s
-      "  #{@body.gsub("\r",'').gsub("\n", "\n  ")}"
+      body.to_s
     end
 
     def create
@@ -27,9 +27,9 @@ module Cheatly
       end
     end
 
-    def self.find(handle)
-      t, b = adapter.find(handle)
-      Sheet.new(t, b, persisted: true)
+    def self.find(name)
+      body = adapter.find(name)
+      Sheet.new(name, body, persisted: true)
     rescue Octokit::NotFound => e
       nil
     rescue RuntimeError => e

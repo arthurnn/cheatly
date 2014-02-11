@@ -10,10 +10,8 @@ module Cheatly
       REPO = 'arthurnn/cheatly'
 
       def find(path)
-        response = Octokit.contents(REPO, path: "#{FOLDER}/#{path}.yml")
-        sheet_yaml = Base64.decode64(response.content)
-        yml = YAML.load(sheet_yaml).first
-        [yml.first, yml.last]
+        response = Octokit.contents(REPO, path: "#{FOLDER}/#{path}.md")
+        Base64.decode64(response.content)
       end
 
       def all

@@ -2,8 +2,11 @@ require "cheatly/version"
 require "cheatly/sheet"
 require "cheatly/adapter/file"
 require "cheatly/adapter/github"
+require "cheatly/renderer"
 
 require "pager"
+require "optparse"
+require "redcarpet"
 require "thor"
 
 module Cheatly
@@ -20,8 +23,9 @@ module Cheatly
         return
       end
       page
-      puts "#{sheet.title}:"
-      puts sheet.to_s
+      renderer = Renderer.new
+      md = Redcarpet::Markdown.new(renderer, no_intra_emphasis: true)
+      puts md.render(sheet.to_s)
     end
 
     desc "list sheets", "list all available sheets"
