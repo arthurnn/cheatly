@@ -74,7 +74,7 @@ module Cheatly
       end
 
       def write_to_tempfile(title, body = nil)
-        tempfile = Tempfile.new(title + '.yml')
+        tempfile = Tempfile.new(title + '.md')
         tempfile.write(body) if body
         tempfile.close
         system "#{editor} #{tempfile.path}"
