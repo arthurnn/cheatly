@@ -17,7 +17,7 @@ module Cheatly
         response.map { |f| f.name.gsub(/\.[a-z]+\z/, '') }
       end
 
-      def create
+      def create(name, body)
         raise NotImplementedError
       end
     end
