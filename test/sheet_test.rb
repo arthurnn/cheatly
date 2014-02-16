@@ -8,11 +8,23 @@ class SheetTest < MiniTest::Test
   end
 
   def test_sheet_find
-    sheet = Cheatly::Sheet.find("bash")
-    assert sheet
+    assert Cheatly::Sheet.find("bash")
+    assert Cheatly::LocalSheet.find("bash")
   end
 
   def test_sheet_not_found
     assert_nil Cheatly::Sheet.find("foo")
+  end
+
+  def test_write_sheet
+    sheet = Cheatly::Sheet.new("foo")
+    assert_raises(NotImplementedError) { sheet.save }
+
+    sheet = Cheatly::LocalSheet.new("foobar")
+    sheet.body = "foobar"
+    sheet.save
+
+    assert_nil Cheatly::Sheet.find("foobar")
+    assert Cheatly::LocalSheet.find("foobar")
   end
 end

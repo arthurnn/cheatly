@@ -29,7 +29,7 @@ module Cheatly
 
     def self.find(name)
       body = adapter.find(name)
-      Sheet.new(name, body, persisted: true)
+      self.new(name, body, persisted: true)
     rescue Octokit::NotFound, Octokit::TooManyRequests
       puts "Octokit error."
       nil
@@ -46,15 +46,16 @@ module Cheatly
       @adapter ||= Cheatly::Adapter::GitHub.new
     end
 
-    def self.with_file_adapter
-      @adapter = Cheatly::Adapter::File.new
-      self
-    end
-
     private
 
       def adapter
         self.class.adapter
       end
+  end
+
+  class LocalSheet < Sheet
+    def self.adapter
+      @adapter ||= Cheatly::Adapter::File.new
+    end
   end
 end
