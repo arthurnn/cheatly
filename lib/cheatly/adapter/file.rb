@@ -13,7 +13,6 @@ module Cheatly
       end
 
       def create(name, body)
-        body = {name => body}.to_yaml
         f = ::File.new("sheets/#{name}.md", "w")
         f.write(body)
         f.close
