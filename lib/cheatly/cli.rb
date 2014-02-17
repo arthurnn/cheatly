@@ -15,6 +15,8 @@ module Cheatly
 
     class_option :local, type: :boolean, aliases: "-l", desc: "Run using local file system"
 
+    class_option :nopaginate, type: :boolean, desc: "Disable pagination"
+
     desc "show SHEET_NAME", "show a cheat sheet"
     def show(handle)
       sheet = model.find(handle)
@@ -22,7 +24,7 @@ module Cheatly
         puts "Sheet not found, run 'cheatly list' to see the availables."
         return
       end
-      page
+      page unless options[:nopaginate]
       renderer = Renderer.new
       md = Redcarpet::Markdown.new(renderer, no_intra_emphasis: true)
       puts md.render(sheet.to_s)
@@ -31,7 +33,7 @@ module Cheatly
     desc "list sheets", "list all available sheets"
     def list
       sheets = model.all
-      page
+      page unless options[:nopaginate]
       puts "List of available cheat-sheets:"
       sheets.each do |sheet|
         puts "  #{sheet.title}"
