@@ -26,5 +26,23 @@ class SheetTest < MiniTest::Test
 
     assert_nil Cheatly::Sheet.find("foobar")
     assert Cheatly::LocalSheet.find("foobar")
+  ensure
+    FileUtils.rm "sheets/foobar.md"
+  end
+
+  def test_update_sheet
+    sheet = Cheatly::LocalSheet.new("bar")
+    sheet.body = "foo"
+    sheet.save
+
+    assert sheet.persisted
+
+    sheet.body = "foo"
+    sheet.save
+
+    assert sheet = Cheatly::LocalSheet.find("bar")
+    assert_equal "foo", sheet.body
+  ensure
+    FileUtils.rm "sheets/bar.md"
   end
 end

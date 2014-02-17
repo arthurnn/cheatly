@@ -1,6 +1,6 @@
 module Cheatly
   class Sheet
-    attr_accessor :title, :body
+    attr_accessor :title, :body, :persisted
 
     def initialize(title, body = nil, options = {})
       @title, @body = title, body
@@ -13,6 +13,7 @@ module Cheatly
 
     def create
       adapter.create(title, body)
+      @persisted = true
     end
 
     def update
