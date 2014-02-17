@@ -20,6 +20,10 @@ module Cheatly
       def create(name, body)
         raise NotImplementedError
       end
+
+      def update(name, body)
+        raise NotImplementedError
+      end
     end
   end
 end
