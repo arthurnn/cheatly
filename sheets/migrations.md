@@ -1,5 +1,9 @@
 # Rails Migrations
 
+## Generating a new migration
+
+  rails generate migration AddPartNumberToProducts
+
 ## Methods:
 
   create_table(name, options)
