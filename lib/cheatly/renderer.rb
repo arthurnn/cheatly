@@ -17,11 +17,13 @@ module Cheatly
     end
 
     def header(title, level)
-      sep = case level
-      when 1 then '='
-      when 2 then '+'
-      when 3 then '-'
-      end
+      sep =
+        case level
+        when 1 then '='
+        when 2 then '+'
+        when 3 then '-'
+        else ''
+        end
 
       "\n#{title.bold}\n#{(sep * title.length).bold}\n"
     end
