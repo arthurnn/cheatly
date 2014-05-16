@@ -53,5 +53,3 @@ Building from source will allow you to test changes to your code locally before 
 Repeat steps 3-4 to check modified code.
 
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/arthurnn/cheatly/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
