@@ -2,20 +2,20 @@
 
 ## Generating a new migration
 
-  rails generate migration AddPartNumberToProducts
+    rails generate migration AddPartNumberToProducts
 
 ## Methods:
 
-  create_table(name, options)
-  drop_table(name)
-  rename_table(old_name, new_name)
-  add_column(table_name, column_name, type, options)
-  rename_column(table_name, column_name, new_column_name)
-  change_column(table_name, column_name, type, options)
-  remove_column(table_name, column_name)
-  add_index(table_name, column_name, index_type)
-  remove_index(table_name, column_name)
-  change_table(table_name) { |table| ... }
+    create_table(name, options)
+    drop_table(name)
+    rename_table(old_name, new_name)
+    add_column(table_name, column_name, type, options)
+    rename_column(table_name, column_name, new_column_name)
+    change_column(table_name, column_name, type, options)
+    remove_column(table_name, column_name)
+    add_index(table_name, column_name, index_type)
+    remove_index(table_name, column_name)
+    change_table(table_name) { |table| ... }
 
 ## Available Column Types (mappings are below):
 
@@ -43,19 +43,19 @@
 
 ## Rake Tasks:
 
-- rake db:schema:dump: run after you create a model to capture the schema.rb
-- rake db:schema:import: import the schema file into the current database
+- `rake db:schema:dump`: run after you create a model to capture the schema.rb
+- `rake db:schema:import`: import the schema file into the current database
   (on error, check if your schema.rb has `force: true` on the create table
   statements)
-- rails generate migration (migration name): generate a new migration with
+- `rails generate migration (migration name)`: generate a new migration with
   a new 'highest' version (run 'rails generate migration' for this info at
   your fingertips)
-- rake db:migrate: migrate your current database to the most recent version
-- rake db:migrate VERSION=5: migrate your current database to a specific
+- `rake db:migrate`: migrate your current database to the most recent version
+- `rake db:migrate VERSION=5`: migrate your current database to a specific
   version (in this case, version 5)
-- rake db:rollback: migrate down one migration
-- rake db:rollback STEP=3: migrate down three migrations
-- rake db:migrate RAILS_ENV=production: migrate your production database
+- `rake db:rollback`: migrate down one migration
+- `rake db:rollback STEP=3`: migrate down three migrations
+- `rake db:migrate RAILS_ENV=production`: migrate your production database
 
 ## SQL:
 

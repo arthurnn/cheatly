@@ -53,6 +53,7 @@
 
 ## Completion
 (Here "2T" means Press TAB twice)
+
     $ 2T - All available commands(common)
     $ (string)2T - All available commands starting with (string)
     $ /2T - Entire directory structure including hidden one
