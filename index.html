@@ -41,7 +41,7 @@
 				<h4>Help</h4>
 				<p><code>$ cheatly help</code></p>
 				<h4>List all cheat sheets</h4>
-				<p><code>$ cheatly list</code></p>
+				<p><code>$ cheatly ls</code></p>
 				<h4>Show a cheat sheet</h4>
 				<p><code>$ cheatly show gem_release</code></p>
 
@@ -53,8 +53,10 @@
 				<h4>Help: Adding a new cheat-sheet</h4>
 				<p>Submit a PR, adding a file to <strong>sheets</strong> folder, with the cheat-sheet name.</p>
 				<ol>
-					<li>Fork it</li>
-					<li><strong>cheatly new name</strong> (replacing name with name of the sheet)</li>
+    				        <li>git clone https://github.com/arthurnn/cheatly.git && cd cheatly</li>
+					<li><strong>cheatly create name</strong> (replacing name with name of the sheet)</li>
+					<li>Replace content of sheets/name.md</li>
+					<li>cheatly show --local NAME to test your new sheet</li>
 					<li>Create new Pull Request</li>
 				</ol>
 				<h4>Add a new feature</h4>
