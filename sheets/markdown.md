@@ -23,6 +23,12 @@
 
     `code goes here` => <code>code goes here</code>
 
+    ```
+    <ul>                                       => This is multiline code block
+      <li>Some text</li>                       => This is second line of code
+    </ul>                                      => This is third line of code
+    ```
+
 ##  Lists:
 
                =>   <ul>
