@@ -31,11 +31,11 @@ module Cheatly
     def self.find(name)
       body = adapter.find(name)
       self.new(name, body, persisted: true)
-    rescue Octokit::NotFound, Octokit::TooManyRequests
-      puts "Octokit error."
+    rescue Octokit::NotFound
       nil
-    rescue RuntimeError => e
+    rescue Exception => e
       puts e.message
+      nil
     end
 
     def self.all
