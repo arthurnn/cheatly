@@ -28,7 +28,7 @@ Submit a PR, adding a file to `sheets` folder, with the cheat-sheet name.
 
 ### List all cheat sheets
 
-    $ cheatly list
+    $ cheatly ls
 
 ### Show a cheat sheet
 
