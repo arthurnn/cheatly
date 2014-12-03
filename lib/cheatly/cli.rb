@@ -40,6 +40,9 @@ module Cheatly
       end
     end
 
+    desc "list sheets", "list all available sheets"
+    alias_method :ls, :list
+
     desc "create SHEET_NAME", "create a new sheet cheat"
     def create(handle)
       sheet = LocalSheet.new(handle)
