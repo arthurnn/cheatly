@@ -23,6 +23,12 @@
 
     `code goes here` => <code>code goes here</code>
 
+    ```                                        => <code>
+    <ul>                                       => <ul>
+      <li>Some text</li>                       =>   <li>Some text</li>
+    </ul>                                      => </ul>
+    ```                                        => </code>
+
 ##  Lists:
 
                =>   <ul>
@@ -36,6 +42,16 @@
      3. item 2 =>     <li>item 2</li>
      1. item 3 =>     <li>item 3</li>
                =>   </ol>
+
+## Tables:
+
+                                   => <table>
+    Header     | Header            => <tr><th>Header</th><th>Header</th></tr>
+    ---------- | ---------------
+    Some       | Text              => <tr><th>Some</th><th>Text</th></tr>
+    Another    | Example           => <tr><th>Another</th><th>Example</th></tr>
+    Next       | Line              => <tr><th>Next</th><th>Line</th></tr>
+                                   => <table>
 
 ## Inline:
 
