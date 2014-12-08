@@ -17,6 +17,8 @@ module Cheatly
 
     class_option :nopaginate, type: :boolean, desc: "Disable pagination"
 
+    class_option :test, type: :boolean, desc: "Disable real output"
+
     desc "show SHEET_NAME", "show a cheat sheet"
     def show(handle)
       sheet = model.find(handle)
@@ -27,16 +29,18 @@ module Cheatly
       page unless options[:nopaginate]
       renderer = Renderer.new
       md = Redcarpet::Markdown.new(renderer, no_intra_emphasis: true)
-      puts md.render(sheet.to_s)
+      puts md.render(sheet.to_s) unless options[:test]
     end
 
     desc "list sheets", "list all available sheets"
     def list
       sheets = model.all
       page unless options[:nopaginate]
-      puts "List of available cheat-sheets:"
-      sheets.each do |sheet|
-        puts "  #{sheet.title}"
+      unless options[:test]
+        puts "List of available cheat-sheets:"
+        sheets.each do |sheet|
+          puts "  #{sheet.title}"
+        end
       end
     end
 
@@ -59,7 +63,7 @@ module Cheatly
 
     desc "help", "help"
     def help
-      show('help')
+      show('help') unless options[:test]
     end
 
     desc "version", "Prints cheatly's version"
