@@ -53,4 +53,6 @@ Building from source will allow you to test changes to your code locally before 
 
 Repeat steps 3-4 to check modified code.
 
+## Testing
 
+You can also run tests using `rake test` command.
