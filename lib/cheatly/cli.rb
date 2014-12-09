@@ -23,7 +23,11 @@ module Cheatly
     def show(handle)
       sheet = model.find(handle)
       unless sheet
-        puts "Sheet not found, run 'cheatly list' to see the availables."
+        unless options[:test]
+          puts "Sheet not found, run 'cheatly list' to see the availables."
+        else
+          raise "Sheet not found, run 'cheatly list' to see the availables."
+        end
         return
       end
       page unless options[:nopaginate]
@@ -39,7 +43,7 @@ module Cheatly
       unless options[:test]
         puts "List of available cheat-sheets:"
         sheets.each do |sheet|
-          puts "  #{sheet.title}"
+          puts " #{sheet.title}"
         end
       end
     end
