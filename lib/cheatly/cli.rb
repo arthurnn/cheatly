@@ -72,7 +72,7 @@ module Cheatly
 
     desc "version", "Prints cheatly's version"
     def version
-      puts "Cheatly version #{Cheatly::VERSION}"
+      puts "Cheatly version #{Cheatly::VERSION}" unless options[:test]
     end
     map %w(-v --version) => :version
 

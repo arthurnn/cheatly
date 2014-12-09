@@ -36,4 +36,13 @@ class CliTest < MiniTest::Test
       raise "#{e.message}"
     end
   end
+
+  def test_version
+    begin
+      cli = Cheatly::CLI.new([], test: true)
+      cli.version
+    rescue Exception => e
+      raise "#{e.message}"
+    end
+  end
 end
